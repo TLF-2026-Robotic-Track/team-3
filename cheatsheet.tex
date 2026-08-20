@@ -107,7 +107,7 @@
 \begin{center}
 {\sffamily\bfseries\Large\color{accent} Duckiebot Command Cheat Sheet}\\[2pt]
 {\sffamily\footnotesize\color{dim} SSH \ $|$ \ Linux \ $|$ \ scp \ $|$ \ git \ $|$ \ make \ $|$ \ ROS2 Humble \ $|$ \ tmux \ $|$ \ Docker}\\[3pt]
-{\footnotesize Replace \code{duckieXX} with the number written on your robot. Replace \code{yournick} with your own nickname.}
+{\footnotesize Replace \code{duckieXX} with the number written on your robot. Replace \code{yournick} with your own nickname. Replace \code{team1} with your own repo folder.}
 \end{center}
 \vspace{2pt}
 {\color{accent!55}\hrule height 0.8pt}
@@ -203,15 +203,15 @@ ssh -i .ssh/nickname duckie@duckieXX.local
 % ---------------------------------------------------------------- 4
 \begin{sect}{4 \ Copy files --- run these ON YOUR COMPUTER}
 \begin{cmd}
-scp myfile.py duckie@duckieXX.local:~/DuckieExamples/
+scp myfile.py duckie@duckieXX.local:~/team1/
 \end{cmd}
 \nt{Send one file to the robot.}
 \begin{cmd}
-scp -rp src/. duckie@duckieXX.local:~/DuckieExamples/src/
+scp -rp src/. duckie@duckieXX.local:~/team1/src/
 \end{cmd}
 \nt{Send a whole folder. The \code{/.} matters: without it you get \code{src/src} once the folder already exists there.}
 \begin{cmd}
-scp 'duckie@duckieXX.local:~/DuckieExamples/images/*.jpg' .
+scp 'duckie@duckieXX.local:~/team1/images/*.jpg' .
 \end{cmd}
 \nt{Get the pictures. The quotes matter: they stop your own shell expanding \code{*}.}
 \begin{cmd}

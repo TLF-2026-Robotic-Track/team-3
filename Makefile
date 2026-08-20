@@ -1,15 +1,18 @@
 # IMAGE       our image, the one this Makefile builds. Shows up in "docker images".
 #             The same for everybody, it is built from the requirements files.
 # BASE_IMAGE  the image we start FROM. Lives on Docker Hub. We never build it.
-# NAME        the name of the running container. One container per robot, the
-#             whole team shares it. Override it if you need your own:
-#             make run NAME=duckiebot-vasya
+# NAME        the name of the running container. Taken from the name of this
+#             folder, so team-1 and team-2 get their own container even on the
+#             same robot. Override it with: make run NAME=something-else
 IMAGE      ?= duckie-image
 BASE_IMAGE ?= spgc/duckiebot-base-image:latest
-NAME       ?= duckiebot
 
-# The folder this Makefile sits in, no matter where you run make from.
+# The folder this Makefile sits in, no matter where you run make from,
+# and just its last part (team-1, team-2, ...).
 REPO_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
+FOLDER   := $(notdir $(REPO_DIR))
+
+NAME     ?= duckiebot-$(FOLDER)
 
 # Build the image, then build the ROS2 workspace inside it.
 # --symlink-install links the node files instead of copying them, so editing
