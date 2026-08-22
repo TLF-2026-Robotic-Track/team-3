@@ -49,4 +49,5 @@ images/
 .vscode/sftp.json
 
 # --- personal Makefile overrides -------------------------------------------
-local.mk
+local.mkimages_from_duckie03
+images_from_duckie03
